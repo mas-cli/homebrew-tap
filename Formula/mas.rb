@@ -6,7 +6,7 @@ class Mas < Formula
   head "https://github.com/mas-cli/mas.git"
 
   bottle do
-    root_url "https://bintray.com/phatblat/mas-bottles/"
+    root_url "https://dl.bintray.com/phatblat/mas-bottles"
     cellar :any_skip_relocation
     sha256 "a59ffe6b34ad251fcb57dbea5ba2d0e3d7319fea8cb6543fdef80b9961343cf6" => :high_sierra
     sha256 "a59ffe6b34ad251fcb57dbea5ba2d0e3d7319fea8cb6543fdef80b9961343cf6" => :sierra
