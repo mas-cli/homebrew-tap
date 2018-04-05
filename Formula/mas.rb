@@ -8,12 +8,11 @@ class Mas < Formula
   bottle do
     root_url "https://dl.bintray.com/phatblat/mas-bottles"
     cellar :any_skip_relocation
-    rebuild 1
-    sha256 "94452187c379b9ca1a07bae748b89c3124467eff1e44932a7936d07da72682b5" => :high_sierra
-    sha256 "94452187c379b9ca1a07bae748b89c3124467eff1e44932a7936d07da72682b5" => :sierra
-    sha256 "94452187c379b9ca1a07bae748b89c3124467eff1e44932a7936d07da72682b5" => :el_capitan
-    sha256 "94452187c379b9ca1a07bae748b89c3124467eff1e44932a7936d07da72682b5" => :yosemite
-    sha256 "94452187c379b9ca1a07bae748b89c3124467eff1e44932a7936d07da72682b5" => :mavericks
+    sha256 "63dab65f0902790c92fee49e0209b6b59aa829f36200ccc2c479d44d63f03ba0" => :high_sierra
+    sha256 "63dab65f0902790c92fee49e0209b6b59aa829f36200ccc2c479d44d63f03ba0" => :sierra
+    sha256 "63dab65f0902790c92fee49e0209b6b59aa829f36200ccc2c479d44d63f03ba0" => :el_capitan
+    sha256 "63dab65f0902790c92fee49e0209b6b59aa829f36200ccc2c479d44d63f03ba0" => :yosemite
+    sha256 "63dab65f0902790c92fee49e0209b6b59aa829f36200ccc2c479d44d63f03ba0" => :mavericks
   end
 
   pour_bottle? do
