@@ -7,8 +7,8 @@ Here you'll find bottles of mas for older versions of macOS.
 Use the following commands to add this tap to your local Homebrew installation.
 
 ```
-$ brew tap mas-cli/mas
-$ brew tap-pin mas-cli/mas
+$ brew tap mas-cli/tap
+$ brew tap-pin mas-cli/tap
 $ brew install mas
 ```
 
@@ -21,15 +21,15 @@ You can review the repos you have tapped and pinned using the following commands
 ```
 $ brew tap
 caskroom/cask
-mas-cli/mas
+mas-cli/tap
 $ brew tap --list-pinned
-mas-cli/mas
+mas-cli/tap
 ```
 
 If you want to switch back to the core mas formula, you can unpin this tap.
 
 ```
-$ brew tap-unpin mas-cli/mas
+$ brew tap-unpin mas-cli/tap
 ```
 
 # 📄 License
