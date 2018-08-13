@@ -8,7 +8,6 @@ class Mas < Formula
   bottle do
     root_url "https://dl.bintray.com/phatblat/mas-bottles"
     cellar :any_skip_relocation
-    rebuild 1
     sha256 "a99d0d7baecf45a00787365a2a078ae94068a0c63012e87f92282efb120e586e" => :el_capitan
     sha256 "a99d0d7baecf45a00787365a2a078ae94068a0c63012e87f92282efb120e586e" => :high_sierra
     sha256 "a99d0d7baecf45a00787365a2a078ae94068a0c63012e87f92282efb120e586e" => :mojave
