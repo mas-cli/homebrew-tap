@@ -40,9 +40,6 @@ class Mas < Formula
                 "SYMROOT=build"
 
     system "script/install", prefix
-               "-scheme", "mas-cli Release",
-               "SYMROOT=build"
-    bin.install "build/mas"
 
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
   end
