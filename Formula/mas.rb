@@ -2,23 +2,22 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      :tag => "v1.4.4",
-      :revision => "3660365dd334cd852dd83d42ee016e267821a5de"
+      :tag      => "v1.5.0",
+      :revision => "ccaaa74c9593d04dc41fcff40af196fdad49f517"
   head "https://github.com/mas-cli/mas.git"
 
   bottle do
     root_url "https://dl.bintray.com/phatblat/mas-bottles"
     cellar :any
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :mojave
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :high_sierra
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :sierra
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :el_capitan
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :yosemite
-    sha256 "237fd7270cb8f0d68a33e7ce05671a2e5c269d05d736abb0f66b50215439084e" => :mavericks
+    sha256 "e12ef9a1351214e59011326b913d03800fa5c5e07b50681051e50dc98fa2d05a" => :mojave
+    sha256 "e12ef9a1351214e59011326b913d03800fa5c5e07b50681051e50dc98fa2d05a" => :high_sierra
+    sha256 "e12ef9a1351214e59011326b913d03800fa5c5e07b50681051e50dc98fa2d05a" => :sierra
+    sha256 "e12ef9a1351214e59011326b913d03800fa5c5e07b50681051e50dc98fa2d05a" => :el_capitan
   end
 
   depends_on "carthage" => :build
   depends_on :xcode => ["10.1", :build]
+  depends_on "trash"
 
   def install
     # Working around build issues in dependencies
