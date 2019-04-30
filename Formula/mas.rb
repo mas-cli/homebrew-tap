@@ -2,17 +2,17 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      :tag      => "v1.6.2",
-      :revision => "b3197cf3caa797aa8689cd15da3518cc7149d2ad"
+      :tag      => "v1.6.3",
+      :revision => "3ac7e51b9e9fdd33f7caf7c77bebf09bf0cce44b"
   head "https://github.com/mas-cli/mas.git"
 
   bottle do
     root_url "https://dl.bintray.com/phatblat/mas-bottles"
     cellar :any
-    sha256 "451db10c91387ea9eb052b15331960508a94cc828a45e7fc62035e9793eabc04" => :mojave
-    sha256 "451db10c91387ea9eb052b15331960508a94cc828a45e7fc62035e9793eabc04" => :high_sierra
-    sha256 "451db10c91387ea9eb052b15331960508a94cc828a45e7fc62035e9793eabc04" => :sierra
-    sha256 "451db10c91387ea9eb052b15331960508a94cc828a45e7fc62035e9793eabc04" => :el_capitan
+    sha256 "2e0a42866823ef0dfd0b4e0e86f9016ab634ce7206e56c3520cb6fc18098d955" => :mojave
+    sha256 "2e0a42866823ef0dfd0b4e0e86f9016ab634ce7206e56c3520cb6fc18098d955" => :high_sierra
+    sha256 "2e0a42866823ef0dfd0b4e0e86f9016ab634ce7206e56c3520cb6fc18098d955" => :sierra
+    sha256 "2e0a42866823ef0dfd0b4e0e86f9016ab634ce7206e56c3520cb6fc18098d955" => :el_capitan
   end
 
   depends_on "carthage" => :build
@@ -29,10 +29,12 @@ class Mas < Formula
     EOS
     ENV["XCODE_XCCONFIG_FILE"] = xcconfig
 
-    system "carthage", "bootstrap", "--platform", "macOS"
+    # Only build necessary dependencies (Commandant, Result)
+    system "carthage", "bootstrap", "--platform", "macOS", "Commandant", "Result"
     system "script/install", prefix
 
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
+    fish_completion.install "contrib/completion/mas.fish"
   end
 
   test do
