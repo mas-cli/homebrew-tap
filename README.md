@@ -8,28 +8,14 @@ Use the following commands to add this tap to your local Homebrew installation.
 
 ```
 $ brew tap mas-cli/tap
-$ brew tap-pin mas-cli/tap
-$ brew install mas
+$ brew install mas-cli/tap/mas
 ```
 
-The [`tap-pin` command](https://docs.brew.sh/Taps#formula-duplicate-names)
-is necessary since mas is already included in the core tap of Homebrew. A pinned tap's
-formulae take precedence over duplicates in other taps.
-
-You can review the repos you have tapped and pinned using the following commands.
+If you want to switch back to the core mas formula, you can remove mas-cli/tap/mas and untap this tap.
 
 ```
-$ brew tap
-caskroom/cask
-mas-cli/tap
-$ brew tap --list-pinned
-mas-cli/tap
-```
-
-If you want to switch back to the core mas formula, you can unpin this tap.
-
-```
-$ brew tap-unpin mas-cli/tap
+$ brew uninstall mas-cli/tap/mas
+$ brew untap mas-cli/tap
 ```
 
 # 📄 License
