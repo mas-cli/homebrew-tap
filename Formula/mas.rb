@@ -2,23 +2,22 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v1.8.3",
-      revision: "aeeb1c508e98d657769ef4e368a113be7822d92e"
+      tag:      "v1.8.4",
+      revision: "02ceea49cd39717f26c2e1117ac4ef07385736fa"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.3"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3be8fedcbe67571100d0ec45f9ed4d68a22db93e406806a4365568138dd33bb7"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "3be8fedcbe67571100d0ec45f9ed4d68a22db93e406806a4365568138dd33bb7"
-    sha256 cellar: :any_skip_relocation, monterey:       "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, big_sur:        "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, catalina:       "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, mojave:         "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, high_sierra:    "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, sierra:         "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
-    sha256 cellar: :any_skip_relocation, el_capitan:     "6b960f09c2214e4ff48d60b88147bcc0cdde5e2916c085d4fcfc622b7ef89b6b"
+    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.4"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, monterey:       "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, big_sur:        "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, catalina:       "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, mojave:         "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, high_sierra:    "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, sierra:         "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
+    sha256 cellar: :any_skip_relocation, el_capitan:     "99b47db5ad006eada492511e1a4de5ff63b2e46b05a8e3b253f59f9e13a0e585"
   end
 
   depends_on :macos
