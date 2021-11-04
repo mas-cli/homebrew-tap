@@ -9,15 +9,15 @@ class Mas < Formula
 
   bottle do
     root_url "https://github.com/mas-cli/mas/releases/download/v1.8.5"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, monterey:       "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, big_sur:        "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, catalina:       "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, mojave:         "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, high_sierra:    "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, sierra:         "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
-    sha256 cellar: :any_skip_relocation, el_capitan:     "05efead81872b31846bfbd8c9859566291b6255b45ce9a7705a85b9c3d1d8281"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, monterey:       "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, big_sur:        "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, catalina:       "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, mojave:         "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, high_sierra:    "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, sierra:         "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
+    sha256 cellar: :any_skip_relocation, el_capitan:     "2bf14f3f6cd15b18fe3c96585ceea2d2e538bf1c0c384aba4cd0ac78c19ea287"
   end
 
   depends_on :macos
