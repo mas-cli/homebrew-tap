@@ -6,13 +6,13 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v1.8.7-beta.40",
-      revision: "3332773c1b5b7936b3436a3241132154a2bf92bd"
+      tag:      "v1.8.7-beta.42",
+      revision: "64961e7c8111d614fcc7b4739f72d10dc8700716"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.7-beta.1"
+    root_url "https://github.com/mas-cli/mas/releases/download/v64961e7c8111d614fcc7b4739f72d10dc8700716"
     sha256 cellar: :any_skip_relocation, arm64_sonoma:   "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
     sha256 cellar: :any_skip_relocation, arm64_ventura:  "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
     sha256 cellar: :any_skip_relocation, arm64_monterey: "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
