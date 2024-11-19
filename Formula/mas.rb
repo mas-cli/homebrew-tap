@@ -6,35 +6,30 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v1.8.7-beta.40",
-      revision: "3332773c1b5b7936b3436a3241132154a2bf92bd"
+      tag:      "v1.8.7",
+      revision: "4405807010987802c0967bbf349c08808062b824"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.7-beta.1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, sonoma:         "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, ventura:        "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, monterey:       "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, big_sur:        "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, catalina:       "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, mojave:         "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, high_sierra:    "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, sierra:         "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
-    sha256 cellar: :any_skip_relocation, el_capitan:     "0d042a450d2623e3ea40db0b645454ee88d1a1763a7aa778eec5beea619b9a60"
+    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, sonoma:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, ventura:        "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, monterey:       "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, catalina:       "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, mojave:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, high_sierra:    "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, sierra:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    sha256 cellar: :any_skip_relocation, el_capitan:     "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
   end
 
+  depends_on xcode: ["14.2", :build]
   depends_on :macos
-  on_arm do
-    depends_on xcode: ["12.2", :build]
-  end
-  on_intel do
-    depends_on xcode: ["12.0", :build]
-  end
 
   def install
     system "script/build"
