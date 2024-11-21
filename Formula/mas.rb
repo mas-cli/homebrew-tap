@@ -33,7 +33,7 @@ class Mas < Formula
 
   def install
     system "script/build"
-    system "script/install", prefix
+    bin.install ".build/release/mas"
 
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
     fish_completion.install "contrib/completion/mas.fish"
