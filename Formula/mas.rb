@@ -12,20 +12,9 @@ class Mas < Formula
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/mas/releases/download/v1.8.7"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, sonoma:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, ventura:        "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, monterey:       "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, big_sur:        "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, catalina:       "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, mojave:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, high_sierra:    "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, sierra:         "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
-    sha256 cellar: :any_skip_relocation, el_capitan:     "5d0214faef2a956c72a4c610ff73ecec0ffa14555547a48e50a4432f1c655565"
+    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-1.8.8-beta.13"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "98fa68b6b80a59dc81e01154fb49917fdde19814573592bf12d428a2e9021d6b"
+    sha256 cellar: :any_skip_relocation, ventura:       "2fb701e792bad845b6800c8008fa303276e29a8438f6b5c5bd4ea57abed860ce"
   end
 
   depends_on xcode: ["14.2", :build]
