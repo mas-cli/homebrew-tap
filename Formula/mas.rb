@@ -21,7 +21,7 @@ class Mas < Formula
   depends_on :macos
 
   def install
-    system "script/build"
+    system "script/build", "--disable-sandbox"
     bin.install ".build/release/mas"
 
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
