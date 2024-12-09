@@ -10,8 +10,8 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-13, macos-15]
-    runs-on: ${{ matrix.os }}
+        os: [macos-13, macos-14, macos-15]
+    runs-on: ${{matrix.os}}
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -20,9 +20,9 @@ jobs:
       - name: Cache Homebrew Bundler RubyGems
         uses: actions/cache@v4
         with:
-          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ matrix.os }}-rubygems-
+          path: ${{steps.set-up-homebrew.outputs.gems-path}}
+          key: ${{matrix.os}}-rubygems-${{steps.set-up-homebrew.outputs.gems-hash}}
+          restore-keys: ${{matrix.os}}-rubygems-
 
       - run: brew test-bot --only-cleanup-before
 
@@ -37,5 +37,5 @@ jobs:
         if: always() && github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: bottles_${{ matrix.os }}
+          name: bottles_${{matrix.os}}
           path: '*.bottle.*'
