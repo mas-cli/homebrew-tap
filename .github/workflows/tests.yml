@@ -30,23 +30,15 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae
+      - name: Build & test bottle
         if: github.event_name == 'pull_request'
+        env:
+          HOMEBREW_FAKE_MACOS: ${{runner.arch == 'ARM64' && '11.7.10' || '10.13.6'}}
+        run: brew test-bot --only-formulae
 
-      - name: Rename bottle
-        if: github.event_name == 'pull_request'
-        run: |
-          autoload zmv
-          if [[ "${ImageOS}" = macos15 ]]; then
-            (zmv '(*)sequoia(*)' '$1big_sur$2') || true
-          else
-            (zmv '(*)ventura(*)' '$1high_sierra$2') || true
-          fi
-
-      - name: Download 1.8.6 bottle
-        if: github.event_name == 'pull_request' && matrix.os == 'macos-15'
-        run: |
-          curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas--1.8.6.el_capitan.bottle.tar.gz
+      - name: Download 1.8.6 bottle for macOS versions on which the current mas version cannot run
+        if: github.event_name == 'pull_request' && matrix.os == 'macos-13'
+        run: curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas--1.8.6.el_capitan.bottle.tar.gz
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
