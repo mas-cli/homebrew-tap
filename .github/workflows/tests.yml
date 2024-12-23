@@ -38,15 +38,15 @@ jobs:
         run: |
           autoload zmv
           if [[ "${ImageOS}" = macos15 ]]; then
-            (zmv 'mas-(*).arm64_sequoia.bottle.tar.gz' 'mas-$1.arm64_big_sur.bottle.tar.gz') || true
+            (zmv '(*)sequoia(*)' '$1big_sur$2') || true
           else
-            (zmv 'mas-(*).ventura.bottle.tar.gz' 'mas-$1.high_sierra.bottle.tar.gz') || true
+            (zmv '(*)ventura(*)' '$1high_sierra$2') || true
           fi
 
       - name: Download 1.8.6 bottle
         if: github.event_name == 'pull_request' && matrix.os == 'macos-15'
         run: |
-          curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas-1.8.6.el_capitan.bottle.tar.gz
+          curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas--1.8.6.el_capitan.bottle.tar.gz
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
