@@ -33,20 +33,23 @@ jobs:
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
-      - name: Rename bottle
+      - name: Modify bottle to be for oldest macOS version supported by the current platform
         if: github.event_name == 'pull_request'
         run: |
           autoload zmv
           if [[ "${ImageOS}" = macos15 ]]; then
-            (zmv 'mas-(*).arm64_sequoia.bottle.tar.gz' 'mas-$1.arm64_big_sur.bottle.tar.gz') || true
+            built=sequoia
+            deploy=big_sur
           else
-            (zmv 'mas-(*).ventura.bottle.tar.gz' 'mas-$1.high_sierra.bottle.tar.gz') || true
+            built=ventura
+            deploy=high_sierra
           fi
+          zmv "(*)${built}(*)" "\$1${deploy}\$2"
+          sed -i "s/${built}/${deploy}/g" *"${deploy}.bottle.json"
 
-      - name: Download 1.8.6 bottle
-        if: github.event_name == 'pull_request' && matrix.os == 'macos-15'
-        run: |
-          curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas-1.8.6.el_capitan.bottle.tar.gz
+      - name: Download 1.8.6 bottle for macOS versions on which the current mas version cannot run
+        if: github.event_name == 'pull_request' && matrix.os == 'macos-13'
+        run: curl -LO https://github.com/mas-cli/mas/releases/download/v1.8.6/mas--1.8.6.el_capitan.bottle.tar.gz
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
