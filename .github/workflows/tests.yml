@@ -30,11 +30,22 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - name: Build & test bottle
+      - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
-        env:
-          HOMEBREW_FAKE_MACOS: ${{runner.arch == 'ARM64' && '11.7.10' || '11.7.10'}}
-        run: brew test-bot --only-formulae
+
+      - name: Modify bottle to be for oldest macOS version supported by the current platform
+        if: github.event_name == 'pull_request'
+        run: |
+          autoload zmv
+          if [[ "${ImageOS}" = macos15 ]]; then
+            built=sequoia
+            deploy=big_sur
+          else
+            built=ventura
+            deploy=high_sierra
+          fi
+          zmv "(*)${built}(*)" "\$1${deploy}\$2"
+          sed -i "s/${built}/${deploy}/g" *".${deploy}.bottle.json"
 
       - name: Download 1.8.6 bottle for macOS versions on which the current mas version cannot run
         if: github.event_name == 'pull_request' && matrix.os == 'macos-13'
