@@ -45,6 +45,7 @@ jobs:
             deploy=high_sierra
           fi
           zmv "(*)${built}(*)" "\$1${deploy}\$2"
+          ls -lhA
           sed -i "s/${built}/${deploy}/g" *".${deploy}.bottle.json"
 
       - name: Download 1.8.6 bottle for macOS versions on which the current mas version cannot run
