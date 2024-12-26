@@ -23,7 +23,9 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{github.token}}
           PULL_REQUEST: ${{github.event.pull_request.number}}
-        run: brew pr-pull --debug --tap="${GITHUB_REPOSITORY}" "${PULL_REQUEST}"
+        run: |
+          printf $'%s\n%s\n' "${GITHUB_REPOSITORY}" "${PULL_REQUEST}"
+          brew pr-pull --debug --tap="${GITHUB_REPOSITORY}" "${PULL_REQUEST}"
 
       - name: Push commits
         uses: Homebrew/actions/git-try-push@master
