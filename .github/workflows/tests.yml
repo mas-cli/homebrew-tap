@@ -30,20 +30,21 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae
-        if: github.event_name == 'pull_request'
-
-      - name: Modify bottle to be for oldest macOS version supported by the current platform
+      - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
         if: github.event_name == 'pull_request'
         run: |
-          autoload zmv
           if [[ "${ImageOS}" = macos15 ]]; then
             built=sequoia
             deploy=big_sur
+            sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           else
             built=ventura
             deploy=high_sierra
           fi
+
+          brew test-bot --only-formulae
+
+          autoload zmv
           zmv "(*)${built}(*)" "\$1${deploy}\$2"
           sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json"
 
