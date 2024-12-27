@@ -46,7 +46,7 @@ jobs:
 
           autoload zmv
           zmv "(*)${built}(*)" "\$1${deploy}\$2"
-          sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json"
+          [[ -n *"${deploy}.bottle.json"(#qN) ]] && sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json" || true
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
