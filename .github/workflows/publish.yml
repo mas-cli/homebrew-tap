@@ -2,13 +2,10 @@ name: brew pr-pull
 on:
   pull_request_target:
     types: [labeled]
-defaults:
-  run:
-    shell: /bin/zsh -Negku {0}
 jobs:
   pr-pull:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       pull-requests: write
