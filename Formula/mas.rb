@@ -21,7 +21,8 @@ class Mas < Formula
   depends_on :macos
 
   def install
-    system "script/build", "--disable-sandbox"
+    ENV["MAS_DIRTY_INDICATOR"] = ""
+    system "script/build", "mas-cli/tap/mas", "--disable-sandbox"
     bin.install ".build/release/mas"
 
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
