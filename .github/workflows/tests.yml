@@ -39,7 +39,7 @@ jobs:
             sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           else
             built=ventura
-            deploy=high_sierra
+            deploy=catalina
           fi
 
           brew test-bot --only-formulae
