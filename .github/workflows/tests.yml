@@ -36,7 +36,7 @@ jobs:
           if [[ "${ImageOS}" = macos15 ]]; then
             built=sequoia
             deploy=big_sur
-            sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+            sudo xcode-select -s /Applications/Xcode_16.3.app/Contents/Developer
           else
             built=ventura
             deploy=catalina
