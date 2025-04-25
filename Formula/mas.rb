@@ -16,7 +16,7 @@ class Mas < Formula
     sha256 cellar: :any_skip_relocation, arm64_big_sur: "08ad8855e6a7ac93ac27d7750dee387f4a4b657b0ab64df030a554100cea2266"
   end
 
-  depends_on xcode: ["14.2", :build]
+  depends_on xcode: ["15.0", :build]
   depends_on :macos
 
   def install
