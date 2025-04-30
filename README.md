@@ -1,12 +1,12 @@
-# 🍻🚰📦 mas Homebrew Tap
+# 🍻🚰📦 mas Homebrew Custom Tap
 
 Bottles of mas for older versions of macOS.
 
-# 🤳🏼 Usage
+# 🤳 Usage
 
 Run the following command to install `mas` from this custom tap:
 
-```bash
+```shell
 brew install mas-cli/tap/mas
 ```
 
@@ -19,10 +19,14 @@ brew "mas"
 
 If you want to remove this formula & custom tap (possibly before switching to the `mas` formula from `homebrew-core`):
 
-```bash
-$ brew uninstall mas-cli/tap/mas
-$ brew untap mas-cli/tap
+```shell
+brew uninstall mas-cli/tap/mas
+brew untap mas-cli/tap
 ```
+
+## 📖 Homebrew Documentation
+
+`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
 # 📄 License
 
