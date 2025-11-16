@@ -10,12 +10,19 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [macos-13, macos-15]
+        os: [macos-15-intel, macos-26]
     runs-on: ${{matrix.os}}
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Cache Homebrew Bundler RubyGems
         uses: actions/cache@v4
@@ -33,12 +40,11 @@ jobs:
       - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
         if: github.event_name == 'pull_request'
         run: |
-          if [[ "${ImageOS}" = macos15 ]]; then
-            built=sequoia
+          if [[ ${{matrix.os}} = macos-26 ]]; then
+            built=tahoe
             deploy=big_sur
-            sudo xcode-select -s /Applications/Xcode_16.3.app/Contents/Developer
           else
-            built=ventura
+            built=sequoia
             deploy=catalina
           fi
 
