@@ -23,11 +23,7 @@ class Mas < Formula
   def install
     ENV["MAS_DIRTY_INDICATOR"] = ""
     system "Scripts/build", "mas-cli/tap/mas", "--disable-sandbox", "-c", "release"
-    mkdir ".build/bin"
-    cp "Scripts/mas", ".build/bin/mas"
-    cp ".build/release/mas", ".build/bin/mas-bin"
-    libexec.install ".build/bin"
-    bin.install_symlink "#{libexec}/bin/mas"
+    bin.install ".build/release/mas"
     system "swift", "package", "--disable-sandbox", "generate-manual"
     man1.install ".build/plugins/GenerateManual/outputs/mas/mas.1"
     bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
