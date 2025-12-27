@@ -10,7 +10,11 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        runner: [macos-15-intel, macos-26]
+        include:
+        - runner: macos-15-intel
+          xcode: 26.1.1
+        - runner: macos-26
+          xcode: 26.2
     runs-on: ${{matrix.runner}}
     permissions:
       actions: read
@@ -18,6 +22,9 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+    - name: Select Xcode version
+      run: xcodes select ${{matrix.xcode}}
+
     - name: Set up Homebrew
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@main
