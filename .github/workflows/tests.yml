@@ -18,45 +18,45 @@ jobs:
       contents: read
       pull-requests: read
     steps:
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@main
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@main
+      with:
+        token: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Cache Homebrew Bundler RubyGems
-        uses: actions/cache@v5
-        with:
-          path: ${{steps.set-up-homebrew.outputs.gems-path}}
-          key: ${{matrix.os}}-rubygems-${{steps.set-up-homebrew.outputs.gems-hash}}
-          restore-keys: ${{matrix.os}}-rubygems-
+    - name: Cache Homebrew Bundler RubyGems
+      uses: actions/cache@v5
+      with:
+        path: ${{steps.set-up-homebrew.outputs.gems-path}}
+        key: ${{matrix.os}}-rubygems-${{steps.set-up-homebrew.outputs.gems-hash}}
+        restore-keys: ${{matrix.os}}-rubygems-
 
-      - run: brew test-bot --only-cleanup-before
+    - run: brew test-bot --only-cleanup-before
 
-      - run: brew test-bot --only-setup
+    - run: brew test-bot --only-setup
 
-      - run: brew test-bot --only-tap-syntax
+    - run: brew test-bot --only-tap-syntax
 
-      - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
-        if: github.event_name == 'pull_request'
-        run: |
-          if [[ ${{matrix.os}} = macos-26 ]]; then
-            built=tahoe
-            deploy=big_sur
-          else
-            built=sequoia
-            deploy=catalina
-          fi
+    - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
+      if: github.event_name == 'pull_request'
+      run: |
+        if [[ ${{matrix.os}} = macos-26 ]]; then
+          built=tahoe
+          deploy=big_sur
+        else
+          built=sequoia
+          deploy=catalina
+        fi
 
-          brew test-bot --only-formulae
+        brew test-bot --only-formulae
 
-          autoload zmv
-          zmv "(*)${built}(*)" "\$1${deploy}\$2"
-          [[ -n *"${deploy}.bottle.json"(#qN) ]] && sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json" || true
+        autoload zmv
+        zmv "(*)${built}(*)" "\$1${deploy}\$2"
+        [[ -n *"${deploy}.bottle.json"(#qN) ]] && sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json" || true
 
-      - name: Upload bottles as artifact
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v6
-        with:
-          name: bottles_${{matrix.os}}
-          path: '*.bottle.*'
+    - name: Upload bottles as artifact
+      if: always() && github.event_name == 'pull_request'
+      uses: actions/upload-artifact@v6
+      with:
+        name: bottles_${{matrix.os}}
+        path: '*.bottle.*'
