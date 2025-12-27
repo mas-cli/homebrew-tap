@@ -10,8 +10,8 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [macos-15-intel, macos-26]
-    runs-on: ${{matrix.os}}
+        runner: [macos-15-intel, macos-26]
+    runs-on: ${{matrix.runner}}
     permissions:
       actions: read
       checks: read
@@ -28,8 +28,8 @@ jobs:
       uses: actions/cache@v5
       with:
         path: ${{steps.set-up-homebrew.outputs.gems-path}}
-        key: ${{matrix.os}}-rubygems-${{steps.set-up-homebrew.outputs.gems-hash}}
-        restore-keys: ${{matrix.os}}-rubygems-
+        key: ${{matrix.runner}}-rubygems-${{steps.set-up-homebrew.outputs.gems-hash}}
+        restore-keys: ${{matrix.runner}}-rubygems-
 
     - run: brew test-bot --only-cleanup-before
 
@@ -40,7 +40,7 @@ jobs:
     - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
       if: github.event_name == 'pull_request'
       run: |
-        if [[ ${{matrix.os}} = macos-26 ]]; then
+        if [[ ${{matrix.runner}} = macos-26 ]]; then
           built=tahoe
           deploy=big_sur
         else
@@ -58,5 +58,5 @@ jobs:
       if: always() && github.event_name == 'pull_request'
       uses: actions/upload-artifact@v6
       with:
-        name: bottles_${{matrix.os}}
+        name: bottles_${{matrix.runner}}
         path: '*.bottle.*'
