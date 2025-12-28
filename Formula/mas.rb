@@ -6,8 +6,8 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v4.1.2",
-      revision: "9518476f67223833f6d1bd18d3323d48ef016c1a"
+      tag:      "v5.0.0",
+      revision: "9bb930480a19be68452f86246578945e55580312"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
@@ -17,8 +17,17 @@ class Mas < Formula
     sha256 cellar: :any_skip_relocation, catalina:      "2cb0760acae005c5a3e199156d245c15adab13ca95d2091be17f801d255a229a"
   end
 
-  depends_on xcode: ["16.0", :build]
   depends_on :macos
+
+  uses_from_macos "swift" => :build, since: :sequoia # swift 6.2+
+
+  on_sequoia :or_newer do
+    depends_on xcode: ["26.0", :build]
+  end
+
+  on_sonoma :or_older do
+    depends_on "swift" => :build
+  end
 
   def install
     ENV["MAS_DIRTY_INDICATOR"] = ""
