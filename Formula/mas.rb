@@ -13,9 +13,9 @@ class Mas < Formula
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-6.0.0"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "857c105c11670b5cf5a28c4986393f97fd6ffb8ec0bf03d2d51876523a8d131f"
-    sha256 cellar: :any_skip_relocation, catalina:      "4c398cd35cb0d61a1a2f0021749a7b3742b239a0774fe299f3f77c6aba20753d"
+    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-6.0.0_1"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "996eba6102ebb760ad9600760fa6de87c1631d0676b45545b7ea73e09af79524"
+    sha256 cellar: :any_skip_relocation, ventura:       "c9968a7410beeca81b4fec208f5e62ea0178e2f7c9c927e60f0ba4fb59a219c5"
   end
 
   depends_on :macos
