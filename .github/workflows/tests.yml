@@ -11,10 +11,8 @@ jobs:
     strategy:
       matrix:
         include:
-        - runner: macos-15-intel
-          xcode: 26.1.1
         - runner: macos-26
-          xcode: 26.2
+        - runner: macos-26-intel
     runs-on: ${{matrix.runner}}
     permissions:
       actions: read
@@ -22,8 +20,15 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+    - name: Obtain .xcode-version
+      uses: actions/checkout@v6
+      with:
+        repository: mas-cli/mas
+        sparse-checkout: .xcode-version
+        sparse-checkout-cone-mode: false
+
     - name: Select Xcode version
-      run: xcodes select ${{matrix.xcode}}
+      run: xcodes select
 
     - name: Set up Homebrew
       id: set-up-homebrew
@@ -47,19 +52,10 @@ jobs:
     - name: Build, test & modify bottle to be for oldest macOS version supported by the current platform
       if: github.event_name == 'pull_request'
       run: |
-        if [[ ${{matrix.runner}} = macos-26 ]]; then
-          built=tahoe
-          deploy=big_sur
-        else
-          built=sequoia
-          deploy=catalina
-        fi
-
         brew test-bot --only-formulae
-
         autoload zmv
-        zmv "(*)${built}(*)" "\$1${deploy}\$2"
-        [[ -n *"${deploy}.bottle.json"(#qN) ]] && sed -i '' "s/${built}/${deploy}/g" *"${deploy}.bottle.json" || true
+        zmv '(*)tahoe(*)' '$1ventura$2'
+        [[ -n *ventura.bottle.json(#qN) ]] && sed -i '' s/tahoe/ventura/g *ventura.bottle.json || true
 
     - name: Upload bottles as artifact
       if: always() && github.event_name == 'pull_request'
