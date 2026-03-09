@@ -9,6 +9,7 @@ class Mas < Formula
       tag:      "v6.0.0",
       revision: "ded52f56981ff736b6c9f9e7bda7a104902cca87"
   license "MIT"
+  revision 1
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
