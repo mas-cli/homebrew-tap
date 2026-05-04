@@ -6,15 +6,15 @@ class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v6.0.1",
-      revision: "535562b304eb110700eb57f289317f7b5c41cb2d"
+      tag:      "v7.0.0",
+      revision: "7c70ffdfd9f71a654300a78b3b627782e6abe1b4"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-6.0.1"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b5ddb7a4474c24a5d55056736fc41f9e5b594e89a2edb1433449b1b27e6bc222"
-    sha256 cellar: :any_skip_relocation, ventura:       "b0f7e3e85c8798b476de5636ac98506ab1d045261e0ac863015bb8f44a2f097f"
+    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-6.0.0_1"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "996eba6102ebb760ad9600760fa6de87c1631d0676b45545b7ea73e09af79524"
+    sha256 cellar: :any_skip_relocation, ventura:       "c9968a7410beeca81b4fec208f5e62ea0178e2f7c9c927e60f0ba4fb59a219c5"
   end
 
   depends_on :macos
@@ -27,15 +27,17 @@ class Mas < Formula
 
   on_sonoma :or_older do
     depends_on "swift" => :build
+    depends_on "jq"
   end
 
   def install
     ENV["MAS_DIRTY_INDICATOR"] = ""
     system "Scripts/build", "mas-cli/tap/mas", "--disable-sandbox", "-c", "release"
-    bin.install ".build/release/mas"
+    (libexec/"bin").install ".build/release/mas"
+    bin.install "Scripts/mas"
     system "swift", "package", "--disable-sandbox", "generate-manual"
     man1.install ".build/plugins/GenerateManual/outputs/mas/mas.1"
-    bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
+    bash_completion.install "contrib/completion/mas.bash" => "mas"
     fish_completion.install "contrib/completion/mas.fish"
   end
 
