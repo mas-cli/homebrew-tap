@@ -1,7 +1,3 @@
-# typed: strict
-# frozen_string_literal: true
-
-# mas command formula for custom tap (mas-cli/homebrew-tap).
 class Mas < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
@@ -10,6 +6,11 @@ class Mas < Formula
       revision: "7c70ffdfd9f71a654300a78b3b627782e6abe1b4"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
+
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
 
   bottle do
     root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-7.0.0"
@@ -20,19 +21,15 @@ class Mas < Formula
   depends_on :macos
 
   uses_from_macos "swift" => :build, since: :sequoia # swift 6.2+
+  uses_from_macos "jq", since: :sequoia
 
   on_sequoia :or_newer do
     depends_on xcode: ["26.0", :build]
   end
 
-  on_sonoma :or_older do
-    depends_on "swift" => :build
-    depends_on "jq"
-  end
-
   def install
     ENV["MAS_DIRTY_INDICATOR"] = ""
-    system "Scripts/build", "mas-cli/tap/mas", "--disable-sandbox", "-c", "release"
+    system "Scripts/build", "#{tap&.name}/#{name}", "--disable-sandbox", "-c", "release"
     (libexec/"bin").install ".build/release/mas"
     bin.install "Scripts/mas"
     system "swift", "package", "--disable-sandbox", "generate-manual"
