@@ -1,33 +1,33 @@
-# 🍻🚰📦 mas Homebrew Custom Tap
+# mas Homebrew Custom Tap
 
-Bottles of mas for older versions of macOS.
+mas Homebrew formula for older macOS versions.
 
-# 🤳 Usage
-
-Run the following command to install `mas` from this custom tap:
+## Installation
 
 ```shell
 brew install mas-cli/tap/mas
 ```
 
-Or, in a [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) `Brewfile`:
+Or, in a [`brew bundle`](https://docs.brew.sh/Brew-Bundle-and-Brewfile) `Brewfile`:
 
 ```ruby
 tap "mas-cli/tap"
-brew "mas"
+brew "mas-cli/tap/mas"
 ```
 
-If you want to remove this formula & custom tap (possibly before switching to the `mas` formula from `homebrew-core`):
+## Uninstallation
+
+If you want to remove this formula & custom tap (possibly before switching to the Homebrew Core `mas` formula):
 
 ```shell
 brew uninstall mas-cli/tap/mas
 brew untap mas-cli/tap
 ```
 
-## 📖 Homebrew Documentation
+## Homebrew Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
-# 📄 License
+## License
 
-This repo is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for rights and limitations.
+Licensed under the [MIT license](LICENSE).
